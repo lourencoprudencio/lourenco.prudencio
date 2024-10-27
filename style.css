@@ -1,0 +1,159 @@
+/* Reset */
+* {
+    margin: 0; /* Resets the margin for all elements to 0 */
+    padding: 0; /* Resets the padding for all elements to 0 */
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+/* Body */
+body {
+    font-family: 'Roboto', sans-serif; /* Sets the font family to Roboto */
+    transition: background-color 0.3s, color 0.3s; /* Adds a transition effect for background color and text color changes */
+    overflow-x: hidden; /* Hides horizontal overflow to prevent scrolling */
+}
+
+/* Themes */
+:root {
+    --bg-color-dark: #000000; /* Dark background color */
+    --text-color-dark: #ffffff; /* Dark text color */
+    --bg-color-light: #ffffff; /* Light background color is now white */
+    --text-color-light: #000000; /* Light text color is now black */
+    --accent-color: #d4af37; /* Accent color for highlights */
+}
+
+body.dark-theme {
+    background-color: var(--bg-color-dark); /* Sets the dark theme background color */
+    color: var(--text-color-dark); /* Sets the dark theme text color */
+}
+
+body.light-theme {
+    background-color: var(--bg-color-light); /* Sets the light theme background color */
+    color: var(--text-color-light); /* Sets the light theme text color */
+}
+
+/* Header */
+header {
+    padding: 1rem; /* Adds padding to the header */
+    text-align: center; /* Centers text within the header */
+    position: sticky; /* Makes the header stick to the top of the viewport */
+    top: 0; /* Positions the header at the top */
+    z-index: 1000; /* Ensures the header is above other elements */
+    background-color: inherit; /* Inherits the background color from parent */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow below the header */
+}
+
+.header-content {
+    display: flex; /* Uses flexbox for layout */
+    justify-content: space-between; /* Spaces items evenly with space between */
+    align-items: center; /* Aligns items vertically centered */
+    gap: 1rem; /* Adds space between items */
+    max-width: 900px; /* Sets a maximum width for the header content */
+    margin: auto; /* Centers the header content horizontally */
+}
+
+.logo {
+    height: 50px; /* Sets a fixed height for the logo */
+}
+
+/* Name with texture and animated effect */
+.name {
+    font-size: 2rem; /* Sets the font size for the name */
+    background: linear-gradient(90deg, #d4af37, #ffcc00); /* Applies a gradient background */
+    -webkit-background-clip: text; /* Clips the background to the text for WebKit browsers */
+    -webkit-text-fill-color: transparent; /* Makes the text fill color transparent for WebKit */
+    background-clip: text; /* Clips the background to the text */
+    animation: glow 1.5s infinite alternate; /* Applies a glowing animation to the name */
+}
+
+/* Glow animation */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.7); /* Initial shadow for glow effect */
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 1), 0 0 30px rgba(212, 175, 55, 1); /* Final shadow for stronger glow */
+    }
+}
+
+/* Theme toggle button */
+#theme-toggle {
+    background: none; /* Removes default button background */
+    border: none; /* Removes default button border */
+    cursor: pointer; /* Changes the cursor to pointer on hover */
+    color: var(--text-color-dark); /* Sets icon color in dark mode */
+    font-size: 2rem; /* Adjusts the font size as needed */
+    line-height: 1; /* Aligns the emoji vertically */
+}
+
+/* Main sections */
+main {
+    padding: 2rem; /* Adds padding to the main content */
+    max-width: 900px; /* Sets a maximum width for the main content */
+    margin: auto; /* Centers the main content horizontally */
+}
+
+.links-section {
+    margin-bottom: 2rem; /* Adds space below each section */
+}
+
+h2 {
+    margin-bottom: 0.5rem; /* Adds space below the heading */
+    color: var(--accent-color); /* Sets the heading color to accent color */
+    text-transform: uppercase; /* Transforms heading text to uppercase */
+}
+
+/* Links */
+.links-section ul {
+    list-style: none; /* Removes default list styling */
+}
+
+.links-section a {
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Inherits color from parent element */
+    position: relative; /* Sets relative positioning for pseudo-element */
+    display: inline-block; /* Allows padding and margin to be applied */
+    padding: 0.5rem 0; /* Adds vertical padding to links */
+    transition: color 0.2s ease; /* Adds a transition effect for color changes */
+}
+
+.links-section a::after {
+    content: ""; /* Creates a pseudo-element after the link */
+    position: absolute; /* Positions the pseudo-element absolutely */
+    width: 100%; /* Sets width to 100% of the link */
+    height: 2px; /* Sets height of the pseudo-element */
+    background: var(--accent-color); /* Sets the background color to accent color */
+    bottom: 0; /* Positions it at the bottom of the link */
+    left: 0; /* Aligns it to the left */
+    transform: scaleX(0); /* Starts hidden (scale 0) */
+    transform-origin: right; /* Sets the transformation origin to the right */
+    transition: transform 0.3s ease; /* Adds a transition effect for the scaling */
+}
+
+.links-section a:hover::after {
+    transform: scaleX(1); /* Scales to full width on hover */
+    transform-origin: left; /* Changes origin to left on hover */
+}
+
+/* Footer */
+footer {
+    text-align: center; /* Centers text in the footer */
+    padding: 1rem 0; /* Adds vertical padding to the footer */
+    font-size: 0.9rem; /* Sets font size for the footer text */
+    color: #888; /* Sets footer text color to a light gray */
+}
+
+@keyframes loading {
+    0% {
+        opacity: 0; /* Starts fully transparent */
+    }
+    50% {
+        opacity: 1; /* Becomes fully opaque */
+    }
+    100% {
+        opacity: 0; /* Returns to fully transparent */
+    }
+}
+
+.loading {
+    animation: loading 1.5s infinite; /* Applies loading animation that lasts 1.5 seconds and repeats indefinitely */
+}
